@@ -36,3 +36,6 @@ El juego tendrá una interfaz básica de inicio, instrucciones y botón de reini
   - Trello o Google Drive para la organización de tareas y archivos compartidos
 
 </details>
+
+
+Hola a todos
