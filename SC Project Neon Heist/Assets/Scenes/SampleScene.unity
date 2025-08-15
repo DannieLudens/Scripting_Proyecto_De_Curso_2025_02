@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 975360923}
   m_Layer: 0
   m_Name: Plataforma
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1508,6 +1508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defaf39fd6f431f47910c00d8f7484e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpForce: 7
 --- !u!50 &2142996066
 Rigidbody2D:
   serializedVersion: 5
