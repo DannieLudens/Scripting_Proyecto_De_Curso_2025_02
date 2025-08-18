@@ -1,52 +1,76 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;      // Velocidad horizontal. Cuántas unidades por segundo quieres que se mueva al 100% (cuando horizontal es -1 o 1)
-    public float jumpForce = 7f;      // Fuerza del salto
+    public float moveSpeed = 5f;
+    public float jumpForce = 7f;
 
-    private Rigidbody2D rb; //variable para luego referenciar el rigidbody
-    private bool isGrounded = false;  // Saber si está en el suelo
+    private Rigidbody2D rb;
+    private bool isGrounded = false;
+    private Transform plataformaActual = null;
+    private Vector3 ultimaPosicionPlataforma;
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Referencia al Rigidbody2D del jugador
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        // Movimiento horizontal
-        float horizontal = 0.0f; //variable para indicar la dirección del movimiento horizontal
+        ProcesarMovimiento();
+    }
+
+    private void ProcesarMovimiento()
+    {
+        float horizontal = 0.0f;
         if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
         {
-            horizontal = -1.0f; // si se presiona izq o tecla a, va a la izquierda (hacia el lado de los negativos en el plano cartesiano)
+            horizontal = -1.0f;
         }
         else if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
         {
-            horizontal = 1.0f; // si se presiona der o tecla d, va a la derecha (hacia el lado de los positivos en el plano cartesiano)
+            horizontal = 1.0f;
         }
 
-        // Aplicar velocidad horizontal manteniendo la vertical
-        //linearVelocity: es la velocidad del rigidbody en 2D, medida en unidades por segundo.
-        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y); //new Vector2(x, y): crea un vector 2D con esas dos componentes. Entonces se coloca 
-        //Conserva la velocidad vertical actual colocando rb.linearVelocity.y  No tocamos la Y para no romper la gravedad ni el salto. Si estabas cayendo o subiendo por un salto, eso sigue igual.
+        rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
 
-
-        // --- Salto ---
-        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded) // si está en el suelo y se presiona la tecla arriba o w
+        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce); // se mantiene la velocidad horizontal en x y en y se impulsa al personaje hacia arriba
-            isGrounded = false; // Ya no está en el suelo
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            isGrounded = false;
         }
     }
 
-    // Detecta si está en contacto con el suelo
-    private void OnCollisionEnter2D(Collision2D collision) // Este método especial de Unity se llama automáticamente cuando el Rigidbody2D del jugador choca con algo que tenga un collider.
+    private void FixedUpdate()
     {
-        if (collision.collider.CompareTag("Ground")) // si el objeto con el que chocaste tiene el tag de suelo
+        if (plataformaActual != null)
         {
-            isGrounded = true;// es porque estás en el suelo y puedes saltar
+            Vector3 deltaMovimiento = plataformaActual.position - ultimaPosicionPlataforma;
+            transform.position += deltaMovimiento;
+            ultimaPosicionPlataforma = plataformaActual.position;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+        if (collision.collider.GetComponent<movimiento>() != null)
+        {
+            plataformaActual = collision.collider.transform;
+            ultimaPosicionPlataforma = plataformaActual.position;
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.GetComponent<movimiento>() != null)
+        {
+            plataformaActual = null;
+        }
+    }
 }
