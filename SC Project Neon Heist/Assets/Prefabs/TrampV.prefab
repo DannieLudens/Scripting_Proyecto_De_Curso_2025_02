@@ -109,9 +109,9 @@ GameObject:
   - component: {fileID: 976384831419204053}
   - component: {fileID: 3044472852083854452}
   - component: {fileID: 6315772122789056128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Aplastamiento
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

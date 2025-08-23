@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Trap
+  - Collectible
+  - Door
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,11 +17,11 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Collectible
+  - Trap
+  - Ground
   - 
   - 
   - 
