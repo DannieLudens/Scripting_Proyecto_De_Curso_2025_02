@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
         float horizontal = 0.0f;    //variable para indicar la dirección del movimiento horizontal
         if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
         {
-            horizontal = -1.0f; // si se presiona izq o tecla a, va a la izquierda (hacia el lado de los negativos en el plano cartesiano)
+            horizontal = -1.0f; // si se presiona izq o tecla a
         }
         else if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
         {
-            horizontal = 1.0f;  // si se presiona der o tecla d, va a la derecha (hacia el lado de los positivos en el plano cartesiano)
+            horizontal = 1.0f;  // si se presiona der o tecla d
         }
 
         // Aplicar velocidad horizontal manteniendo la vertical
@@ -39,9 +39,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);   //new Vector2(x, y): crea un vector 2D con esas dos componentes. Entonces se coloca 
         //Conserva la velocidad vertical actual colocando rb.linearVelocity.y  No tocamos la Y para no romper la gravedad ni el salto. Si estabas cayendo o subiendo por un salto, eso sigue igual.
 
-
-        // --- Salto ---
-        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded) // si está en el suelo y se presiona la tecla arriba o w
+        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && isGrounded)
 
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);    // se mantiene la velocidad horizontal en x y en y se impulsa al personaje hacia arriba
@@ -60,9 +58,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)  // Este método especial de Unity se llama automáticamente cuando el Rigidbody2D del jugador choca con algo que tenga un collider.
+    private void OnCollisionEnter2D(Collision2D collision)  // cuando el Rigidbody2D del jugador choca con algo que tenga un collider.
     {
-        if (collision.collider.CompareTag("Ground"))    // si el objeto con el que chocaste tiene el tag de suelo
+        if (collision.collider.CompareTag("Ground"))    // si tag es ground suelo
         {
             isGrounded = true;
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 2f;
@@ -28,9 +28,9 @@ public class EnemyBase : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("player")) // cuidado: sensible a may�sculas
+        if (collision.gameObject.CompareTag("player"))
         {
-            Flip(rb.linearVelocity.x); // ahora se usa la velocidad en X
+            Flip(rb.linearVelocity.x); 
             Debug.Log("Choque con el Player, giro!");
         }
     }

@@ -23,7 +23,6 @@ public class PatrolEdgeEnemy : EnemyBase
         Vector2 forward = new Vector2(dir, 0f);
         bool wallAhead = Physics2D.Raycast(wallCheck.position, forward, wallCheckDistance, groundMask);
 
-        // Comprobaciones con mensajes en consola
         if (!groundAhead)
         {
             Debug.Log($"{gameObject.name} volteo porque detectó BORDE");
@@ -38,7 +37,7 @@ public class PatrolEdgeEnemy : EnemyBase
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("player")) //  revisa que tu Player tenga este Tag
+        if (collision.gameObject.CompareTag("player")) 
         {
             Debug.Log($"{gameObject.name} volteo porque chocó con el PLAYER");
             dir *= -1;         // invierte la dirección de movimiento
