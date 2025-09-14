@@ -1,23 +1,28 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class MenuController : MonoBehaviour
 {
     [SerializeField] GameObject MenuPausa;
     private bool isPaused = false;
 
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        string scene = SceneManager.GetActiveScene().name;
+        if ((scene == "Game" || scene == "SandBox") && MenuPausa != null)
         {
-            if (isPaused)
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
             {
-                Resume();
-            }
-            else
-            {
-                Pause();
+                if (isPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
             }
         }
     }
@@ -36,10 +41,10 @@ public class PauseMenu : MonoBehaviour
     }
     public void loadSandbox()
     {
-        if (SceneManager.GetActiveScene().name != "Sandbox")
+        if (SceneManager.GetActiveScene().name != "SandBox")
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene("Sandbox");
+            SceneManager.LoadScene("SandBox");
         }
         else
         {
@@ -61,6 +66,13 @@ public class PauseMenu : MonoBehaviour
     }
     public void ExitGame()
     {
+        Debug.Log("salio del juego");
         Application.Quit();
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 }
