@@ -1549,6 +1549,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -2.55
       objectReference: {fileID: 0}
+    - target: {fileID: 8983821475917864330, guid: af695f18ce48bae4f9314edc78e41104, type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1927,7 +1931,7 @@ GameObject:
   - component: {fileID: 2142996067}
   m_Layer: 0
   m_Name: Jayce Player
-  m_TagString: Player
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2194,6 +2198,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2992285659880526567, guid: daecb5304e619bf41adef4192791f86e, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8989482083520511891, guid: daecb5304e619bf41adef4192791f86e, type: 3}
       propertyPath: m_Name
       value: EnemigoDisparador
@@ -2372,6 +2380,10 @@ PrefabInstance:
     - target: {fileID: 3595326873736326362, guid: e3bf2bd447d98554f92749dc1d4cb72e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571859976937745815, guid: e3bf2bd447d98554f92749dc1d4cb72e, type: 3}
+      propertyPath: m_Mass
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

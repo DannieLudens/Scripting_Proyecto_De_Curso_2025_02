@@ -10,6 +10,7 @@ public class PatrolEdgeEnemy : EnemyBase
     public LayerMask groundMask;
 
     private int dir = 1; // 1 derecha, -1 izquierda
+
     private void FixedUpdate()
     {
         // Mover
@@ -25,13 +26,23 @@ public class PatrolEdgeEnemy : EnemyBase
         // Comprobaciones con mensajes en consola
         if (!groundAhead)
         {
-            Debug.Log($"{gameObject.name} voleto porque detecto BORDE");
+            Debug.Log($"{gameObject.name} volteo porque detectó BORDE");
             dir *= -1;
         }
         else if (wallAhead)
         {
-            Debug.Log($"{gameObject.name} volteo porque detecto PARED");
+            Debug.Log($"{gameObject.name} volteo porque detectó PARED");
             dir *= -1;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("player")) //  revisa que tu Player tenga este Tag
+        {
+            Debug.Log($"{gameObject.name} volteo porque chocó con el PLAYER");
+            dir *= -1;         // invierte la dirección de movimiento
+            Flip(dir);         // actualiza la orientación visual
         }
     }
 

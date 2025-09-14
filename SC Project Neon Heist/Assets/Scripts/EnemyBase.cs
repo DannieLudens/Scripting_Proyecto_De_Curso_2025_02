@@ -25,4 +25,13 @@ public class EnemyBase : MonoBehaviour
             transform.localScale = s;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("player")) // cuidado: sensible a may�sculas
+        {
+            Flip(rb.linearVelocity.x); // ahora se usa la velocidad en X
+            Debug.Log("Choque con el Player, giro!");
+        }
+    }
 }
