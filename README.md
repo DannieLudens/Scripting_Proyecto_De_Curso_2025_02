@@ -51,7 +51,7 @@ El juego tendrá una interfaz básica de inicio, instrucciones y botón de reini
 </details>
 
 <details>
-  <summary>Propuesta de Proyecto (Corregida)</summary>
+  <summary>Propuesta de Proyecto (Corregida)</summary><br>
 
 **Nombre del Proyecto:**
 
@@ -134,3 +134,9 @@ compartidos
 </details>
 
 ---
+
+## Licencias
+
+- Sprites del Proyecto de uso gratuito de [craftpixel.net](https://craftpix.net/freebies/free-industrial-zone-tileset-pixel-art/)
+
+- [Detalles de Licencia](https://craftpix.net/file-licenses/) para los Sprites usados en este proyecto
