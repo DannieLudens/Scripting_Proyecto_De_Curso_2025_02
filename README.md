@@ -1,8 +1,14 @@
 # Scripting_Proyecto_Del_Curso_Scripting_2025_02
 
 ## Documentación
+En este repositorio se encuentra almacenado dentro de la subcarpeta *SC Project Neon Heist* el proyecto de Unity y en consecuencia el código fuente de Neon Heist, el videojuego en desarrollo como proyecto del curso Scripting.
+Para acceder a él, se debe descargar la carpeta mencionada. Al abrir el Unity Hub, en la sección de proyectos, agregar un proyecto desde el disco, seleccionar esta carpeta y verificar que tenga instalada la versión **6000.1.15f1** del editor en su computador, que es con la que se ha trabajado el videojuego.
 
-Gestión, y documentación a traves de Notion
+Si desea acceder al ejecutable, debe descargar la carpeta *Ejecutable*. En caso de estar comprimida, descomprimirla. Desde el explorador de archivos de su computador, doble clic en la aplicación llamada *SC Project Neon Heist* que se encuentra dentro de esta carpeta.
+
+
+## Planeación
+Gestión, y planeación a traves de Notion
 [Link al notion](https://www.notion.so/Proyecto-de-curso-scripting-244fa57617cb808cba7bf1f2ecfbcc97?source=copy_link)
 
 Reuniones los viernes a las 2 p.m. en Teams
