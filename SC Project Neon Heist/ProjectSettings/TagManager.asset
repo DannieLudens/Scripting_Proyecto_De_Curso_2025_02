@@ -9,7 +9,6 @@ TagManager:
   - Collectible
   - Door
   - Enemy
-  - player
   layers:
   - Default
   - TransparentFX

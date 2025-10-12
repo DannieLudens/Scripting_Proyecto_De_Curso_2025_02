@@ -37,7 +37,7 @@ public class PatrolEdgeEnemy : EnemyBase
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("player")) 
+        if (collision.gameObject.CompareTag("Player")) 
         {
             Debug.Log($"{gameObject.name} volteo porque chocó con el PLAYER");
             dir *= -1;         // invierte la dirección de movimiento
