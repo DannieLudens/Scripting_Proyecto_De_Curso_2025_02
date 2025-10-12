@@ -1,0 +1,478 @@
+fileFormatVersion: 2
+guid: 4480eed19b4856d48860551483d648e7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4337088104162458052
+    second: Bottle sprite_0
+  - first:
+      213: -1459298253281128078
+    second: Bottle sprite_1
+  - first:
+      213: 7398798137443040900
+    second: Bottle sprite_2
+  - first:
+      213: -2176272303311531972
+    second: Bottle sprite_3
+  - first:
+      213: -6388610740698414805
+    second: Bottle sprite_4
+  - first:
+      213: -8468369594047129733
+    second: Bottle sprite_5
+  - first:
+      213: 6695383129863065756
+    second: Bottle sprite_6
+  - first:
+      213: -181247653675747380
+    second: Bottle sprite_7
+  - first:
+      213: -5474484485524008536
+    second: Bottle sprite_8
+  - first:
+      213: 8881306931469474049
+    second: Bottle sprite_9
+  - first:
+      213: -5451513193574719793
+    second: Bottle sprite_10
+  - first:
+      213: 4019529290283619058
+    second: Bottle sprite_11
+  - first:
+      213: -1620543757882840776
+    second: Bottle sprite_12
+  - first:
+      213: 6541727382955922637
+    second: Bottle sprite_13
+  - first:
+      213: -2124639593158720201
+    second: Bottle sprite_14
+  - first:
+      213: -4431597650655516239
+    second: Bottle sprite_15
+  - first:
+      213: 110252971955865131
+    second: Bottle sprite_16
+  - first:
+      213: -7252249604446953777
+    second: Bottle sprite_17
+  - first:
+      213: 4991350069747645110
+    second: Bottle sprite_18
+  - first:
+      213: -6523848404855226985
+    second: Bottle sprite_19
+  - first:
+      213: 2294043883081787033
+    second: Bottle sprite_20
+  - first:
+      213: 3604048408992899611
+    second: Bottle sprite_21
+  - first:
+      213: -6748980467212602388
+    second: Bottle sprite_22
+  - first:
+      213: 8336522118785472656
+    second: Bottle sprite_23
+  - first:
+      213: 4518287351788460795
+    second: Bottle sprite_24
+  - first:
+      213: 5368218939965359141
+    second: Bottle sprite_25
+  - first:
+      213: -8244325495353698042
+    second: Bottle sprite_26
+  - first:
+      213: -3836685930139123979
+    second: Bottle sprite_27
+  - first:
+      213: -4293477558481303097
+    second: Bottle sprite_28
+  - first:
+      213: -7808961955528817910
+    second: Bottle sprite_29
+  - first:
+      213: 7427692207683158189
+    second: Bottle sprite_30
+  - first:
+      213: 2466847096457309093
+    second: Bottle sprite_31
+  - first:
+      213: -8910760052735069394
+    second: Bottle sprite_32
+  - first:
+      213: 8191710827897207994
+    second: Bottle sprite_33
+  - first:
+      213: 5460760807888124754
+    second: Bottle sprite_34
+  - first:
+      213: -4748220767676296577
+    second: Bottle sprite_35
+  - first:
+      213: 1243931145754846676
+    second: Bottle sprite_36
+  - first:
+      213: 7727425178616524759
+    second: Bottle sprite_37
+  - first:
+      213: 5494345937460647182
+    second: Bottle sprite_38
+  - first:
+      213: 3891565578104472659
+    second: Bottle sprite_39
+  - first:
+      213: 7527257365873466877
+    second: Bottle sprite_40
+  - first:
+      213: -7705255023144901685
+    second: Bottle sprite_41
+  - first:
+      213: 6161562841256237682
+    second: Bottle sprite_42
+  - first:
+      213: -6635803172649110179
+    second: Bottle sprite_43
+  - first:
+      213: -880122075570148320
+    second: Bottle sprite_44
+  - first:
+      213: -6212189997668470001
+    second: Bottle sprite_45
+  - first:
+      213: 8132580156354583159
+    second: Bottle sprite_46
+  - first:
+      213: -5914751673191911518
+    second: Bottle sprite_47
+  - first:
+      213: 7259864631851274235
+    second: Bottle sprite_48
+  - first:
+      213: -3930249544963480029
+    second: Bottle sprite_49
+  - first:
+      213: 4941582821742799813
+    second: Bottle sprite_50
+  - first:
+      213: -9062216113836991666
+    second: Bottle sprite_51
+  - first:
+      213: -7284384662286212174
+    second: Bottle sprite_52
+  - first:
+      213: 1135633604803944742
+    second: Bottle sprite_53
+  - first:
+      213: -43401938437358438
+    second: Bottle sprite_54
+  - first:
+      213: 3532728905589476974
+    second: Bottle sprite_55
+  - first:
+      213: -7775137159141420890
+    second: Bottle sprite_56
+  - first:
+      213: 3131757882035002405
+    second: Bottle sprite_57
+  - first:
+      213: 5396134746228773320
+    second: Bottle sprite_58
+  - first:
+      213: 5458990781963046331
+    second: Bottle sprite_59
+  - first:
+      213: -2679858504449624552
+    second: Bottle sprite_60
+  - first:
+      213: 2698317997519404382
+    second: Bottle sprite_61
+  - first:
+      213: 6524862300272316028
+    second: Bottle sprite_62
+  - first:
+      213: 6856480479103623702
+    second: Bottle sprite_63
+  - first:
+      213: 6249226181562921575
+    second: Bottle sprite_64
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bottle sprite_0
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 512
+        width: 321
+        height: 438
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c9fc20e6ae603c30800000000000000
+      internalID: 4337088104162458052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bottle sprite_1
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 512
+        width: 337
+        height: 438
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27194d768f78fbbe0800000000000000
+      internalID: -1459298253281128078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bottle sprite_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 515
+        width: 310
+        height: 438
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48e3d1b94bfcda660800000000000000
+      internalID: 7398798137443040900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bottle sprite_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 77
+        width: 324
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c30589aded35cc1e0800000000000000
+      internalID: -2176272303311531972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bottle sprite_4
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 77
+        width: 337
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b210d6031681757a0800000000000000
+      internalID: -6388610740698414805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bottle sprite_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 76
+        width: 317
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b771a18b8be4a7a80800000000000000
+      internalID: -8468369594047129733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 56d9d6c9a6013e74b98b2cabe5343bb1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":2.0},"gridSpriteSize":{"x":512.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Bottle sprite_0: 4337088104162458052
+      Bottle sprite_1: -1459298253281128078
+      Bottle sprite_2: 7398798137443040900
+      Bottle sprite_3: -2176272303311531972
+      Bottle sprite_4: -6388610740698414805
+      Bottle sprite_5: -8468369594047129733
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -66,19 +66,19 @@ public class TrampaVertical : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
             jugadorDentro = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
             jugadorDentro = false; // termina el ciclo actual y luego se detiene arriba
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("player"))
+        if (collision.collider.CompareTag("Player"))
         {
             Debug.Log("daño recibido");
             // TODO: Llama aquí al método de daño de tu PlayerController
