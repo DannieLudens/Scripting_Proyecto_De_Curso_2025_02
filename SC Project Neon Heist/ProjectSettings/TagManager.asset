@@ -47,11 +47,11 @@ TagManager:
   - name: BackGround
     uniqueID: 275963995
     locked: 0
-  - name: World
-    uniqueID: 823996543
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: World
+    uniqueID: 823996543
     locked: 0
   - name: Player
     uniqueID: 2372733535
