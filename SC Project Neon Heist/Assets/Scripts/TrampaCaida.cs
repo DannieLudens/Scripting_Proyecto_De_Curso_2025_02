@@ -7,6 +7,8 @@ public class TrampaVertical : MonoBehaviour
     public float velocidadBajada = 7f;     // Rápido hacia abajo
     public float velocidadSubida = 2f;     // Lento hacia arriba
     public float epsilon = 0.01f;          // Umbral para “llegó” al destino
+    public int damage = 20;                 // Daño al jugador al contacto
+
 
     private enum Estado { EnEsperaArriba, Bajando, Subiendo }
     private Estado estado = Estado.EnEsperaArriba;
@@ -58,7 +60,7 @@ public class TrampaVertical : MonoBehaviour
                     //Si jugadorDentro == true, volvemos a Bajando (otro ciclo).
                     //Si jugadorDentro == false, pasamos a EnEsperaArriba y se queda quieta.
                     estado = jugadorDentro ? Estado.Bajando : Estado.EnEsperaArriba;
-                    
+
                 }
                 break;
         }
@@ -78,10 +80,12 @@ public class TrampaVertical : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("daño recibido");
-            // TODO: Llama aquí al método de daño de tu PlayerController
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player != null)
+                player.TakeDamage(damage);
         }
     }
+
 }

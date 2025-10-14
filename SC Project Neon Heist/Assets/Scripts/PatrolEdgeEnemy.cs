@@ -9,17 +9,17 @@ public class PatrolEdgeEnemy : EnemyBase
     public float wallCheckDistance = 0.1f;
     public LayerMask groundMask;
 
+    [Header("Ataque")]
+    [SerializeField] private int damage = 20;
+
     private int dir = 1; // 1 derecha, -1 izquierda
 
     private void FixedUpdate()
     {
-        // Mover
         rb.linearVelocity = new Vector2(dir * moveSpeed, rb.linearVelocity.y);
         Flip(dir);
 
-        // Raycast al suelo (hacia abajo desde groundCheck)
         bool groundAhead = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundMask);
-        // Raycast a pared (hacia adelante desde wallCheck)
         Vector2 forward = new Vector2(dir, 0f);
         bool wallAhead = Physics2D.Raycast(wallCheck.position, forward, wallCheckDistance, groundMask);
 
@@ -37,11 +37,17 @@ public class PatrolEdgeEnemy : EnemyBase
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"{gameObject.name} volteo porque chocó con el PLAYER");
-            dir *= -1;         // invierte la dirección de movimiento
-            Flip(dir);         // actualiza la orientación visual
+            // Causar daño al jugador
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+            }
+
+            dir *= -1;
+            Flip(dir);
         }
     }
 

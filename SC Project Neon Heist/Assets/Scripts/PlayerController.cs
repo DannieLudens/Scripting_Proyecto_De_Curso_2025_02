@@ -1,31 +1,47 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimiento")]
-    public float moveSpeed = 5f;
-    public float jumpForce = 7f;
+    [SerializeField] public float moveSpeed = 5f;
+    [SerializeField] public float jumpForce = 7f;
 
     private Rigidbody2D rb;
     private bool enSuelo = false;
     private Transform plataformaActual = null;
     private Vector3 ultimaPosicionPlataforma;
-
     private Animator animator;
     private float horizontal = 0.0f;
+
+    [Header("Vida del jugador")]
+    [SerializeField] private int maxVida = 100;
+    [SerializeField] private int vidaActual;
+    [SerializeField] private Slider barraVida;
+    [SerializeField] private float tiempoInvulnerable = 1f;
+
+    [Header("UI de Muerte")]
+    [SerializeField] private Image imagenGameOver; // 👈 Imagen en el Canvas para mostrar al morir
+
+    private bool invulnerable = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        vidaActual = maxVida;
+
+        if (imagenGameOver != null)
+            imagenGameOver.gameObject.SetActive(false); // Oculta la imagen al iniciar
+
+        ActualizarBarraVida();
     }
 
     void Update()
     {
         ProcesarMovimiento();
 
-        // Conexión con tu Animator
         animator.SetFloat("Horizontal", Mathf.Abs(horizontal));
         animator.SetFloat("VelocidadY", rb.linearVelocity.y);
         animator.SetBool("enSuelo", enSuelo);
@@ -33,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
     private void ProcesarMovimiento()
     {
-        // Movimiento lateral
         if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
             horizontal = -1.0f;
         else if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed)
@@ -43,14 +58,12 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
 
-        // Salto
         if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && enSuelo)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             enSuelo = false;
         }
 
-        // Voltear el sprite según dirección
         if (horizontal > 0)
             transform.localScale = new Vector3(1, 1, 1);
         else if (horizontal < 0)
@@ -69,11 +82,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Detecta suelo
         if (collision.collider.CompareTag("Ground"))
             enSuelo = true;
 
-        // Detecta plataformas móviles
         if (collision.collider.GetComponent<movimiento>() != null)
         {
             plataformaActual = collision.collider.transform;
@@ -86,5 +97,48 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.GetComponent<movimiento>() != null)
             plataformaActual = null;
+    }
+
+    // 💥 Sistema de Daño y Muerte
+    public void TakeDamage(int damage)
+    {
+        if (invulnerable) return;
+
+        vidaActual -= damage;
+        vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
+        ActualizarBarraVida();
+
+        if (vidaActual <= 0)
+        {
+            Morir();
+        }
+        else
+        {
+            StartCoroutine(InvulnerabilidadTemporal());
+        }
+    }
+
+    private System.Collections.IEnumerator InvulnerabilidadTemporal()
+    {
+        invulnerable = true;
+        yield return new WaitForSeconds(tiempoInvulnerable);
+        invulnerable = false;
+    }
+
+    private void Morir()
+    {
+        Debug.Log("Jugador ha muerto");
+
+        rb.linearVelocity = Vector2.zero;
+        this.enabled = false; // Desactiva el movimiento del jugador
+
+        if (imagenGameOver != null)
+            imagenGameOver.gameObject.SetActive(true); // 👈 Activa la imagen al morir
+    }
+
+    private void ActualizarBarraVida()
+    {
+        if (barraVida != null)
+            barraVida.value = (float)vidaActual / maxVida;
     }
 }
