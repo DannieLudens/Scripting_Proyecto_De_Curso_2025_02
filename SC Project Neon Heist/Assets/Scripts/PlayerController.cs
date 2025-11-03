@@ -16,15 +16,20 @@ public class PlayerController : MonoBehaviour
     private float horizontal = 0.0f;
 
     [Header("Vida del jugador")]
-    [SerializeField] private int maxVida = 100;
+    [SerializeField] private int maxVida = 6;
     [SerializeField] private int vidaActual;
     [SerializeField] private Slider barraVida;
     [SerializeField] private float tiempoInvulnerable = 1f;
+    private bool invulnerable = false;
 
     [Header("UI de Muerte")]
-    [SerializeField] private Image imagenGameOver; // 👈 Imagen en el Canvas para mostrar al morir
+    [SerializeField] private Image imagenGameOver; // Imagen en el Canvas para mostrar al morir
 
-    private bool invulnerable = false;
+    [Header("Detección")]
+    [SerializeField] private Transform groundCheck; // Un empty debajo del jugador
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [SerializeField] private LayerMask groundLayer;
+
 
     void Start()
     {
@@ -72,6 +77,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Detectar el suelo con un Raycast
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        enSuelo = hit.collider != null;
+
         if (plataformaActual != null)
         {
             Vector3 deltaMovimiento = plataformaActual.position - ultimaPosicionPlataforma;
@@ -99,13 +108,14 @@ public class PlayerController : MonoBehaviour
             plataformaActual = null;
     }
 
-    // 💥 Sistema de Daño y Muerte
+    // Sistema de Daño y Muerte
     public void TakeDamage(int damage)
     {
         if (invulnerable) return;
 
         vidaActual -= damage;
         vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
+        Debug.Log("Jugador herido: -" + damage + " | Vida actual: " + vidaActual);
         ActualizarBarraVida();
 
         if (vidaActual <= 0)
@@ -133,7 +143,7 @@ public class PlayerController : MonoBehaviour
         this.enabled = false; // Desactiva el movimiento del jugador
 
         if (imagenGameOver != null)
-            imagenGameOver.gameObject.SetActive(true); // 👈 Activa la imagen al morir
+            imagenGameOver.gameObject.SetActive(true); // Activa la imagen al morir
     }
 
     private void ActualizarBarraVida()
@@ -141,4 +151,35 @@ public class PlayerController : MonoBehaviour
         if (barraVida != null)
             barraVida.value = (float)vidaActual / maxVida;
     }
+
+    // Sistema de curación
+    public void Heal(int amount)
+    {
+        vidaActual += amount;
+        vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
+        ActualizarBarraVida();
+        Debug.Log("Jugador curado: +" + amount + " | Vida actual: " + vidaActual);
+    }
+
+    // Métodos públicos para acceder a la vida desde otros scripts
+    public int GetVidaActual()
+    {
+        return vidaActual;
+    }
+
+    public int GetMaxVida()
+    {
+        return maxVida;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = enSuelo ? Color.green : Color.red; // verde si toca el suelo, rojo si no
+            Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
+        }
+    }
+
+
 }

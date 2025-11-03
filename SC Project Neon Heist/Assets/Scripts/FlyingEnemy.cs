@@ -79,12 +79,21 @@ public class FlyingEnemy : EnemyBase
 
     private void DetectPlayer()
     {
-        if (player == null)
+        // Buscar si hay un jugador dentro del radio
+        var hit = Physics2D.OverlapCircle(transform.position, detectRadius, playerMask);
+
+        if (hit)
         {
-            var hit = Physics2D.OverlapCircle(transform.position, detectRadius, playerMask);
-            if (hit) player = hit.transform;
+            // Si se detecta un jugador, guardarlo
+            player = hit.transform;
+        }
+        else
+        {
+            // Si no hay jugador en el rango, limpiar la referencia
+            player = null;
         }
     }
+
 
     private bool PlayerInRange()
     {
