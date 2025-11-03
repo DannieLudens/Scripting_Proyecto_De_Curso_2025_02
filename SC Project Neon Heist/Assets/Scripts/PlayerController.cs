@@ -25,7 +25,11 @@ public class PlayerController : MonoBehaviour
     [Header("UI de Muerte")]
     [SerializeField] private Image imagenGameOver; // Imagen en el Canvas para mostrar al morir
 
-    
+    [Header("Detección")]
+    [SerializeField] private Transform groundCheck; // Un empty debajo del jugador
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [SerializeField] private LayerMask groundLayer;
+
 
     void Start()
     {
@@ -73,6 +77,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Detectar el suelo con un Raycast
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        enSuelo = hit.collider != null;
+
         if (plataformaActual != null)
         {
             Vector3 deltaMovimiento = plataformaActual.position - ultimaPosicionPlataforma;
@@ -163,4 +171,15 @@ public class PlayerController : MonoBehaviour
     {
         return maxVida;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = enSuelo ? Color.green : Color.red; // verde si toca el suelo, rojo si no
+            Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
+        }
+    }
+
+
 }
