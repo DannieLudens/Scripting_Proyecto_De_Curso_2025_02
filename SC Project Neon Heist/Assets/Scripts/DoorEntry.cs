@@ -20,7 +20,7 @@ public class DoorEntry : MonoBehaviour
         animator.SetTrigger("OpenDoor");
         IsOpen = true;
 
-        // Opcional: desactivar el collider para que no bloquee más al jugador
+        // desactivar el collider para que no bloquee más al jugador
         if (doorCollider != null)
         {
             doorCollider.enabled = false;

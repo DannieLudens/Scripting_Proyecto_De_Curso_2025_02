@@ -20,11 +20,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int vidaActual;
     [SerializeField] private Slider barraVida;
     [SerializeField] private float tiempoInvulnerable = 1f;
+    private bool invulnerable = false;
 
     [Header("UI de Muerte")]
     [SerializeField] private Image imagenGameOver; // Imagen en el Canvas para mostrar al morir
 
-    private bool invulnerable = false;
+    
 
     void Start()
     {
@@ -99,13 +100,14 @@ public class PlayerController : MonoBehaviour
             plataformaActual = null;
     }
 
-    // 💥 Sistema de Daño y Muerte
+    // Sistema de Daño y Muerte
     public void TakeDamage(int damage)
     {
         if (invulnerable) return;
 
         vidaActual -= damage;
         vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
+        Debug.Log("Jugador herido: -" + damage + " | Vida actual: " + vidaActual);
         ActualizarBarraVida();
 
         if (vidaActual <= 0)
@@ -140,5 +142,25 @@ public class PlayerController : MonoBehaviour
     {
         if (barraVida != null)
             barraVida.value = (float)vidaActual / maxVida;
+    }
+
+    // Sistema de curación
+    public void Heal(int amount)
+    {
+        vidaActual += amount;
+        vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
+        ActualizarBarraVida();
+        Debug.Log("Jugador curado: +" + amount + " | Vida actual: " + vidaActual);
+    }
+
+    // Métodos públicos para acceder a la vida desde otros scripts
+    public int GetVidaActual()
+    {
+        return vidaActual;
+    }
+
+    public int GetMaxVida()
+    {
+        return maxVida;
     }
 }

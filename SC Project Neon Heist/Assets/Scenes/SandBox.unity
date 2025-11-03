@@ -824,7 +824,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.35, y: -2.42, z: -10}
+  m_LocalPosition: {x: -11.1, y: -2.75, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1102,8 +1102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 7
-  maxVida: 100
-  vidaActual: 0
+  maxVida: 6
+  vidaActual: 6
   barraVida: {fileID: 0}
   tiempoInvulnerable: 1
   imagenGameOver: {fileID: 0}
@@ -1171,8 +1171,8 @@ Transform:
   m_GameObject: {fileID: 878593552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.85, y: -1.06, z: 0}
-  m_LocalScale: {x: 1.9811, y: 2.0563023, z: 1.9811}
+  m_LocalPosition: {x: -2.6, y: -1.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1092773112}
@@ -2092,6 +2092,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 6315772122789056128, guid: af695f18ce48bae4f9314edc78e41104, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8113021007959255310, guid: af695f18ce48bae4f9314edc78e41104, type: 3}
       propertyPath: m_Name
       value: TrampV (1)
@@ -2109,6 +2113,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af695f18ce48bae4f9314edc78e41104, type: 3}
+--- !u!1 &1544738103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3099637558733561390, guid: b804483eb8f79184e8abd534a5db003e, type: 3}
+  m_PrefabInstance: {fileID: 1383934347173247249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1544738108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544738103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed17847632e4c34ea08eacd65177fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  lifetime: 5
 --- !u!1 &1581244363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,7 +2312,7 @@ Transform:
   m_GameObject: {fileID: 1601561189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.35, y: -2.42, z: -10}
+  m_LocalPosition: {x: -11.1, y: -2.75, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3219,7 +3242,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3099637558733561390, guid: b804483eb8f79184e8abd534a5db003e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1544738108}
   m_SourcePrefab: {fileID: 100100000, guid: b804483eb8f79184e8abd534a5db003e, type: 3}
 --- !u!1001 &2252440064449805473
 PrefabInstance:
@@ -3272,6 +3298,10 @@ PrefabInstance:
     - target: {fileID: 2992285659880526567, guid: daecb5304e619bf41adef4192791f86e, type: 3}
       propertyPath: m_Mass
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7016536803555848276, guid: daecb5304e619bf41adef4192791f86e, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8989482083520511891, guid: daecb5304e619bf41adef4192791f86e, type: 3}
       propertyPath: m_Name
@@ -3570,6 +3600,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6315772122789056128, guid: af695f18ce48bae4f9314edc78e41104, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8113021007959255310, guid: af695f18ce48bae4f9314edc78e41104, type: 3}
       propertyPath: m_Name
       value: TrampV
@@ -3638,6 +3672,10 @@ PrefabInstance:
     - target: {fileID: 4571859976937745815, guid: e3bf2bd447d98554f92749dc1d4cb72e, type: 3}
       propertyPath: m_Mass
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274215652556678902, guid: e3bf2bd447d98554f92749dc1d4cb72e, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

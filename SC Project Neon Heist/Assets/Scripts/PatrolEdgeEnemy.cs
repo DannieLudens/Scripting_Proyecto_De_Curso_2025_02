@@ -10,7 +10,7 @@ public class PatrolEdgeEnemy : EnemyBase
     public LayerMask groundMask;
 
     [Header("Ataque")]
-    [SerializeField] private int damage = 20;
+    [SerializeField] private int damage = 1;
 
     private int dir = 1; // 1 derecha, -1 izquierda
 
