@@ -58435,7 +58435,7 @@ GameObject:
   - component: {fileID: 1999041755}
   - component: {fileID: 1999041754}
   - component: {fileID: 1999041759}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Jayce Player
   m_TagString: Player
   m_Icon: {fileID: 0}
