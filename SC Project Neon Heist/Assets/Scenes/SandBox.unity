@@ -1458,23 +1458,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &977482391 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8589211570300201115, guid: d3e42321b0ad14f4695981dec4bc4d9d, type: 3}
-  m_PrefabInstance: {fileID: 4381451909274249666}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &977482395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977482391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe6be602836c0842898eb49d50756ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1059058958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2986365827057084011, guid: b804483eb8f79184e8abd534a5db003e, type: 3}
@@ -3408,13 +3391,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle sprite_0
       objectReference: {fileID: 0}
+    - target: {fileID: 8589211570300201115, guid: d3e42321b0ad14f4695981dec4bc4d9d, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589211570300201115, guid: d3e42321b0ad14f4695981dec4bc4d9d, type: 3}
+      propertyPath: m_TagString
+      value: Collectible
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8589211570300201115, guid: d3e42321b0ad14f4695981dec4bc4d9d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 977482395}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e42321b0ad14f4695981dec4bc4d9d, type: 3}
 --- !u!1001 &6132704598717477401
 PrefabInstance:

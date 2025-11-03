@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
     private float horizontal = 0.0f;
 
     [Header("Vida del jugador")]
-    [SerializeField] private int maxVida = 100;
+    [SerializeField] private int maxVida = 6;
     [SerializeField] private int vidaActual;
     [SerializeField] private Slider barraVida;
     [SerializeField] private float tiempoInvulnerable = 1f;
 
     [Header("UI de Muerte")]
-    [SerializeField] private Image imagenGameOver; // 👈 Imagen en el Canvas para mostrar al morir
+    [SerializeField] private Image imagenGameOver; // Imagen en el Canvas para mostrar al morir
 
     private bool invulnerable = false;
 
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         this.enabled = false; // Desactiva el movimiento del jugador
 
         if (imagenGameOver != null)
-            imagenGameOver.gameObject.SetActive(true); // 👈 Activa la imagen al morir
+            imagenGameOver.gameObject.SetActive(true); // Activa la imagen al morir
     }
 
     private void ActualizarBarraVida()

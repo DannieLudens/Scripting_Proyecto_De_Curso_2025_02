@@ -10,7 +10,8 @@ public class CollectibleManager : MonoBehaviour
     private Dictionary<string, int> collectibles = new Dictionary<string, int>()
     {
         { "Money", 0 },
-        { "Card", 0 }
+        { "Card", 0 },
+        { "Life", 0 }
     };
 
     public Text moneyText;
