@@ -1,6 +1,6 @@
 # Scripting_Proyecto_Del_Curso_Scripting_2025_02
 
-[Ejecutable en el Drive click aquí]([https://www.googledirve.com](https://drive.google.com/drive/folders/18Q29GsVf6iYEhjQ7v20EEh-l2Z5XIY5z?usp=sharing))
+[Ejecutable en el Drive click aquí](https://drive.google.com/drive/folders/18Q29GsVf6iYEhjQ7v20EEh-l2Z5XIY5z?usp=sharing)
 
 ## Documentación
 En este repositorio se encuentra almacenado dentro de la subcarpeta *SC Project Neon Heist* el proyecto de Unity y en consecuencia el código fuente de Neon Heist, el videojuego en desarrollo como proyecto del curso Scripting.
