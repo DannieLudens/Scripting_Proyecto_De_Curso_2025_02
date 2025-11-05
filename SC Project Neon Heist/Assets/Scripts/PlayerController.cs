@@ -24,20 +24,20 @@ public class PlayerController : MonoBehaviour
     private bool invulnerable = false;
 
     [Header("Feedback Visual de Daño")]
-    [SerializeField] private float duracionParpadeo = 1f; // Duración del efecto de parpadeo
-    [SerializeField] private float intervaloParpadeo = 0.1f; // Velocidad del parpadeo
-    [SerializeField] private Color colorBarraVidaNormal = Color.green; // Color normal de la barra
-    [SerializeField] private Color colorBarraVidaDanio = Color.red; // Color al recibir daño
-    [SerializeField] private float duracionColorDanio = 0.3f; // Tiempo que dura el color rojo
+    [SerializeField] private float duracionParpadeo = 1f;
+    [SerializeField] private float intervaloParpadeo = 0.1f;
+    [SerializeField] private Color colorBarraVidaNormal = Color.green;
+    [SerializeField] private Color colorBarraVidaDanio = Color.red;
+    [SerializeField] private float duracionColorDanio = 0.3f;
     
     private SpriteRenderer spriteRenderer;
-    private Image fillBarraVida; // Referencia al fill de la barra de vida
+    private Image fillBarraVida;
 
     [Header("UI de Muerte")]
-    [SerializeField] private Image imagenGameOver; // Imagen en el Canvas para mostrar al morir
+    [SerializeField] private Image imagenGameOver; // Imagen opcional (puede dejarse vacío si usas el GameOverManager)
 
     [Header("Detección")]
-    [SerializeField] private Transform groundCheck; // Un empty debajo del jugador
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckDistance = 0.3f;
     [SerializeField] private LayerMask groundLayer;
 
@@ -50,9 +50,8 @@ public class PlayerController : MonoBehaviour
         vidaActual = maxVida;
 
         if (imagenGameOver != null)
-            imagenGameOver.gameObject.SetActive(false); // Oculta la imagen al iniciar
+            imagenGameOver.gameObject.SetActive(false);
 
-        // Obtener el componente Fill de la barra de vida
         if (barraVida != null)
         {
             fillBarraVida = barraVida.fillRect.GetComponent<Image>();
@@ -99,7 +98,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Detectar el suelo con un Raycast
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
         enSuelo = hit.collider != null;
 
@@ -130,7 +128,6 @@ public class PlayerController : MonoBehaviour
             plataformaActual = null;
     }
 
-    // Sistema de Daño y Muerte
     public void TakeDamage(int damage)
     {
         if (invulnerable) return;
@@ -146,7 +143,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Iniciar efectos visuales de daño
             StartCoroutine(EfectoDanioVisual());
             StartCoroutine(InvulnerabilidadTemporal());
         }
@@ -154,17 +150,14 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator EfectoDanioVisual()
     {
-        // Cambiar color de la barra de vida a rojo
         if (fillBarraVida != null)
         {
             fillBarraVida.color = colorBarraVidaDanio;
         }
 
-        // Parpadeo del sprite
         float tiempoTranscurrido = 0f;
         while (tiempoTranscurrido < duracionParpadeo)
         {
-            // Alternar entre transparente y visible
             if (spriteRenderer != null)
             {
                 spriteRenderer.enabled = !spriteRenderer.enabled;
@@ -174,13 +167,11 @@ public class PlayerController : MonoBehaviour
             tiempoTranscurrido += intervaloParpadeo;
         }
 
-        // Asegurar que el sprite quede visible al final
         if (spriteRenderer != null)
         {
             spriteRenderer.enabled = true;
         }
 
-        // Restaurar color de la barra de vida después de un delay
         yield return new WaitForSeconds(duracionColorDanio - duracionParpadeo);
         
         if (fillBarraVida != null)
@@ -201,10 +192,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Jugador ha muerto");
 
         rb.linearVelocity = Vector2.zero;
-        this.enabled = false; // Desactiva el movimiento del jugador
+        this.enabled = false;
 
+        // Mostrar imagen de Game Over (opcional, si la tienes)
         if (imagenGameOver != null)
-            imagenGameOver.gameObject.SetActive(true); // Activa la imagen al morir
+            imagenGameOver.gameObject.SetActive(true);
+
+        // Activar el panel de Game Over con opciones
+        GameOverManager.MostrarGameOver();
     }
 
     private void ActualizarBarraVida()
@@ -213,7 +208,6 @@ public class PlayerController : MonoBehaviour
             barraVida.value = (float)vidaActual / maxVida;
     }
 
-    // Sistema de curación
     public void Heal(int amount)
     {
         vidaActual += amount;
@@ -221,23 +215,20 @@ public class PlayerController : MonoBehaviour
         ActualizarBarraVida();
         Debug.Log("Jugador curado: +" + amount + " | Vida actual: " + vidaActual);
         
-        // Feedback visual de curación (opcional)
         StartCoroutine(EfectoCuracionVisual());
     }
 
     private IEnumerator EfectoCuracionVisual()
     {
-        // Cambiar la barra a verde brillante temporalmente
         if (fillBarraVida != null)
         {
             Color originalColor = fillBarraVida.color;
-            fillBarraVida.color = Color.cyan; // O el color que prefieras para curación
+            fillBarraVida.color = Color.cyan;
             yield return new WaitForSeconds(0.3f);
             fillBarraVida.color = originalColor;
         }
     }
 
-    // Métodos públicos para acceder a la vida desde otros scripts
     public int GetVidaActual()
     {
         return vidaActual;
@@ -252,8 +243,8 @@ public class PlayerController : MonoBehaviour
     {
         if (groundCheck != null)
         {
-            Gizmos.color = enSuelo ? Color.green : Color.red; // verde si toca el suelo, rojo si no
+            Gizmos.color = enSuelo ? Color.green : Color.red;
             Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
         }
     }
-}
+}               
