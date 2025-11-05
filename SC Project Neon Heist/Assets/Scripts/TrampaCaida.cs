@@ -2,17 +2,19 @@
 
 public class TrampaVertical : MonoBehaviour
 {
-    public Transform puntoArriba;          // Límite superior (empty en la escena)
-    public Transform puntoAbajo;           // Límite inferior (empty en la escena)
-    public float velocidadBajada = 7f;     // Rápido hacia abajo
-    public float velocidadSubida = 2f;     // Lento hacia arriba
-    public float epsilon = 0.01f;          // Umbral para “llegó” al destino
-    public int damage = 20;                 // Daño al jugador al contacto
-
+    public Transform puntoArriba;
+    public Transform puntoAbajo;
+    public float velocidadBajada = 7f;
+    public float velocidadSubida = 2f;
+    public float epsilon = 0.01f;
+    public int damage = 20;
 
     private enum Estado { EnEsperaArriba, Bajando, Subiendo }
     private Estado estado = Estado.EnEsperaArriba;
     private bool jugadorDentro = false;
+
+    [Header("Animación de la prensa")]
+    public Animator animator; // 👉 arrastra aquí el Animator de la prensa
 
     void Start()
     {
@@ -22,48 +24,84 @@ public class TrampaVertical : MonoBehaviour
             return;
         }
 
-        // Arranca arriba y quieta
         transform.position = puntoArriba.position;
         estado = Estado.EnEsperaArriba;
+
+        // Opcional: si el Animator está en un hijo puedes buscarlo automáticamente
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
+        float distanciaTotal = Vector3.Distance(puntoArriba.position, puntoAbajo.position);
+
         switch (estado)
         {
             case Estado.EnEsperaArriba:
                 if (jugadorDentro)
-                    estado = Estado.Bajando; //se inicia el ciclo al entrar el jugador
+                {
+                    estado = Estado.Bajando;
+
+                    // Calcular duración del movimiento
+                    float tiempoBajada = distanciaTotal / velocidadBajada;
+
+                    // Reproducir animación sincronizada
+                    animator.Play("Hammer_Down", 0, 0);
+                    animator.speed = 1f / tiempoBajada; // Ajusta velocidad para que dure igual que el recorrido
+                }
                 break;
 
             case Estado.Bajando:
                 transform.position = Vector3.MoveTowards(
-                    transform.position, puntoAbajo.position, velocidadBajada * Time.deltaTime); //Vector3.MoveTowards(posActual, posObjetivo, maxDistancia)
+                    transform.position, puntoAbajo.position, velocidadBajada * Time.deltaTime);
 
                 if (Vector3.Distance(transform.position, puntoAbajo.position) <= epsilon)
                 {
-                    transform.position = puntoAbajo.position; // snap
+                    transform.position = puntoAbajo.position;
                     estado = Estado.Subiendo;
-                    // el ciclo siempre va a terminar en subida y despues verifica si el jugador esta o no dentro
-                    // Si el jugador sale mientras baja: termina de bajar y luego sube; al llegar arriba, como jugadorDentro == false, se queda quieta.
+
+                    float tiempoSubida = distanciaTotal / velocidadSubida;
+                    animator.Play("Hammer_Up", 0, 0);
+                    animator.speed = 1f / tiempoSubida;
                 }
                 break;
 
             case Estado.Subiendo:
                 transform.position = Vector3.MoveTowards(
-                    transform.position, puntoArriba.position, velocidadSubida * Time.deltaTime); //permite el movimiento hacia arriba
+                    transform.position, puntoArriba.position, velocidadSubida * Time.deltaTime);
 
                 if (Vector3.Distance(transform.position, puntoArriba.position) <= epsilon)
                 {
-                    transform.position = puntoArriba.position; // snap
-                    // Si el jugador sigue dentro, repite ciclo; si no, queda quieta
-                    //Si jugadorDentro == true, volvemos a Bajando (otro ciclo).
-                    //Si jugadorDentro == false, pasamos a EnEsperaArriba y se queda quieta.
+                    transform.position = puntoArriba.position;
                     estado = jugadorDentro ? Estado.Bajando : Estado.EnEsperaArriba;
 
+                    if (estado == Estado.Bajando)
+                    {
+                        float tiempoBajada = distanciaTotal / velocidadBajada;
+                        animator.Play("Hammer_Down", 0, 0);
+                        animator.speed = 1f / tiempoBajada;
+                    }
+                    else
+                    {
+                        // Volvemos a estado idle
+                        animator.Play("Hammer_Idle");
+                        animator.speed = 1f;
+                    }
                 }
                 break;
         }
+    }
+
+
+    void ActualizarAnimacion(string estadoAnim)
+    {
+        if (animator == null) return;
+
+        animator.ResetTrigger("Quieto");
+        animator.ResetTrigger("Caer");
+        animator.ResetTrigger("Subir");
+        animator.SetTrigger(estadoAnim);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,7 +113,7 @@ public class TrampaVertical : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-            jugadorDentro = false; // termina el ciclo actual y luego se detiene arriba
+            jugadorDentro = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -87,5 +125,4 @@ public class TrampaVertical : MonoBehaviour
                 player.TakeDamage(damage);
         }
     }
-
 }
