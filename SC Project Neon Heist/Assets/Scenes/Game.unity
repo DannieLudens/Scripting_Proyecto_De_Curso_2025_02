@@ -3813,7 +3813,7 @@ Transform:
   m_GameObject: {fileID: 263755870}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.76, y: -17.24, z: -10}
+  m_LocalPosition: {x: -35.52, y: -16.81, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62587,7 +62587,7 @@ Transform:
   m_GameObject: {fileID: 1980282805}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -83.76, y: -17.24, z: -10}
+  m_LocalPosition: {x: -35.52, y: -16.81, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62762,6 +62762,11 @@ MonoBehaviour:
   vidaActual: 0
   barraVida: {fileID: 12035856}
   tiempoInvulnerable: 1
+  duracionParpadeo: 1
+  intervaloParpadeo: 0.1
+  colorBarraVidaNormal: {r: 0, g: 1, b: 0, a: 1}
+  colorBarraVidaDanio: {r: 1, g: 0, b: 0, a: 1}
+  duracionColorDanio: 0.3
   imagenGameOver: {fileID: 0}
   groundCheck: {fileID: 1180165266}
   groundCheckDistance: 0.3
@@ -62832,7 +62837,7 @@ Transform:
   m_GameObject: {fileID: 1999041753}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.76, y: -17.24, z: 0}
+  m_LocalPosition: {x: -35.52, y: -16.81, z: 0}
   m_LocalScale: {x: 1, y: 1.0379599, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

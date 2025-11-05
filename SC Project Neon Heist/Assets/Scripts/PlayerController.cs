@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float tiempoInvulnerable = 1f;
     private bool invulnerable = false;
 
+    [Header("Feedback Visual de Daño")]
+    [SerializeField] private float duracionParpadeo = 1f; // Duración del efecto de parpadeo
+    [SerializeField] private float intervaloParpadeo = 0.1f; // Velocidad del parpadeo
+    [SerializeField] private Color colorBarraVidaNormal = Color.green; // Color normal de la barra
+    [SerializeField] private Color colorBarraVidaDanio = Color.red; // Color al recibir daño
+    [SerializeField] private float duracionColorDanio = 0.3f; // Tiempo que dura el color rojo
+    
+    private SpriteRenderer spriteRenderer;
+    private Image fillBarraVida; // Referencia al fill de la barra de vida
+
     [Header("UI de Muerte")]
     [SerializeField] private Image imagenGameOver; // Imagen en el Canvas para mostrar al morir
 
@@ -35,10 +46,21 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         vidaActual = maxVida;
 
         if (imagenGameOver != null)
             imagenGameOver.gameObject.SetActive(false); // Oculta la imagen al iniciar
+
+        // Obtener el componente Fill de la barra de vida
+        if (barraVida != null)
+        {
+            fillBarraVida = barraVida.fillRect.GetComponent<Image>();
+            if (fillBarraVida != null)
+            {
+                fillBarraVida.color = colorBarraVidaNormal;
+            }
+        }
 
         ActualizarBarraVida();
     }
@@ -124,11 +146,50 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // Iniciar efectos visuales de daño
+            StartCoroutine(EfectoDanioVisual());
             StartCoroutine(InvulnerabilidadTemporal());
         }
     }
 
-    private System.Collections.IEnumerator InvulnerabilidadTemporal()
+    private IEnumerator EfectoDanioVisual()
+    {
+        // Cambiar color de la barra de vida a rojo
+        if (fillBarraVida != null)
+        {
+            fillBarraVida.color = colorBarraVidaDanio;
+        }
+
+        // Parpadeo del sprite
+        float tiempoTranscurrido = 0f;
+        while (tiempoTranscurrido < duracionParpadeo)
+        {
+            // Alternar entre transparente y visible
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.enabled = !spriteRenderer.enabled;
+            }
+
+            yield return new WaitForSeconds(intervaloParpadeo);
+            tiempoTranscurrido += intervaloParpadeo;
+        }
+
+        // Asegurar que el sprite quede visible al final
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+
+        // Restaurar color de la barra de vida después de un delay
+        yield return new WaitForSeconds(duracionColorDanio - duracionParpadeo);
+        
+        if (fillBarraVida != null)
+        {
+            fillBarraVida.color = colorBarraVidaNormal;
+        }
+    }
+
+    private IEnumerator InvulnerabilidadTemporal()
     {
         invulnerable = true;
         yield return new WaitForSeconds(tiempoInvulnerable);
@@ -159,6 +220,21 @@ public class PlayerController : MonoBehaviour
         vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
         ActualizarBarraVida();
         Debug.Log("Jugador curado: +" + amount + " | Vida actual: " + vidaActual);
+        
+        // Feedback visual de curación (opcional)
+        StartCoroutine(EfectoCuracionVisual());
+    }
+
+    private IEnumerator EfectoCuracionVisual()
+    {
+        // Cambiar la barra a verde brillante temporalmente
+        if (fillBarraVida != null)
+        {
+            Color originalColor = fillBarraVida.color;
+            fillBarraVida.color = Color.cyan; // O el color que prefieras para curación
+            yield return new WaitForSeconds(0.3f);
+            fillBarraVida.color = originalColor;
+        }
     }
 
     // Métodos públicos para acceder a la vida desde otros scripts
@@ -180,6 +256,4 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
         }
     }
-
-
 }
