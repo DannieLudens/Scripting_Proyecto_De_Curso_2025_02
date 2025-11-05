@@ -14,6 +14,15 @@ public class PatrolEdgeEnemy : EnemyBase
 
     private int dir = 1; // 1 derecha, -1 izquierda
 
+    [Header("Animacion")]
+    private Animator animator;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(dir * moveSpeed, rb.linearVelocity.y);
@@ -46,8 +55,7 @@ public class PatrolEdgeEnemy : EnemyBase
                 player.TakeDamage(damage);
             }
 
-            dir *= -1;
-            Flip(dir);
+            // Ya no cambia de dirección al golpear al jugador
         }
     }
 
